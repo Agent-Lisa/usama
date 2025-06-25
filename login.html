@@ -46,35 +46,95 @@
         .btn:hover {
             background-color: #3e8e41;
         }
+        .sidebar {
+            position: fixed;
+            height: 100vh;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: none;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar li {
+            padding: 10px;
+            border-bottom: 1px solid #444;
+        }
+        .sidebar li:hover {
+            background-color: #444;
+        }
+        .sidebar.show {
+            display: block;
+        }
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .main-content {
+            margin-left: 200px;
+            transition: margin-left 0.5s;
+        }
+        .main-content.show {
+            margin-left: 0;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>mobile shop login</h2>
-        <form id="login-form">
-            <div class="form-group">
-                <label for="username">username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button class="btn" type="submit">login</button>
-        </form>
+    <button class="menu-toggle" id="menu-toggle">Menu</button>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li>Dashboard</li>
+            <li>Products</li>
+            <li>Orders</li>
+            <li>Customers</li>
+        </ul>
+    </div>
+    <div class="main-content" id="main-content">
+        <div class="container">
+            <h2>mobile shop login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button class="btn" type="submit">login</button>
+            </form>
+        </div>
     </div>
     <script>
-        const form = document.getelementbyid('login-form');
-        form.addeventlistener('submit', (e) => {
-            e.preventdefault();
-            const username = document.getelementbyid('username').value;
-            const password = document.getelementbyid('password').value;
+        const form = document.getElementById('login-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
             if (username === 'admin' && password === 'password') {
                 alert('login successful!');
                 // add code to redirect to dashboard or other page
             } else {
                 alert('invalid username or password');
             }
+        });
+        const menuToggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+            mainContent.classList.toggle('show');
         });
     </script>
 </html>
