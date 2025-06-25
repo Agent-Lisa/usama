@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobile shop login</title>
+    <style>
+        body {
+            font-family: arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .form-group input {
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            height: 40px;
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>mobile shop login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="username">username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button class="btn" type="submit">login</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getelementbyid('login-form');
+        form.addeventlistener('submit', (e) => {
+            e.preventdefault();
+            const username = document.getelementbyid('username').value;
+            const password = document.getelementbyid('password').value;
+            if (username === 'admin' && password === 'password') {
+                alert('login successful!');
+                // add code to redirect to dashboard or other page
+            } else {
+                alert('invalid username or password');
+            }
+        });
+    </script>
+</html>
